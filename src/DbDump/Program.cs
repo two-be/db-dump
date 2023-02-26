@@ -36,7 +36,7 @@ try
                     if (x.Type == ConnectionType.Postgres)
                     {
                         var outputFile = Path.Combine(settings.OutputDirectory, $"{x.Database}-{DateTime.Now:yyyy-MM-dd}.sql");
-                        Process.Start("cmd", $@"/c ""{settings.Postgres.PgDump}"" --dbname=postgresql://{x.Username}:{x.Password}@{x.Host}:5432/{x.Database} > {outputFile}");
+                        Process.Start("cmd", $@"/c ""{settings.Postgres.PgDump}"" --dbname=postgresql://{x.Username}:{x.Password}@{x.Host}:5432/{x.Database} --file {outputFile} --format=c --encoding UTF8");
                     }
                 }
                 catch (Exception ex)
